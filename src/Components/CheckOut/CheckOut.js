@@ -38,7 +38,7 @@ const CheckOut = () => {
   const handleOrder = () => {};
 
   useEffect(() => {
-    fetch("https://limitless-coast-06672.herokuapp.com/product/" + id)
+    fetch("https://protected-hamlet-09778.herokuapp.com/product/" + id)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);

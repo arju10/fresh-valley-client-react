@@ -18,7 +18,7 @@ const Order = () => {
       userName: data.displayName,
       userEmail: data.email,
     };
-    const url = `https://limitless-coast-06672.herokuapp.com/addOrder`;
+    const url = `https://protected-hamlet-09778.herokuapp.com/addOrder`;
     console.log(productData);
     fetch(url, {
       method: "POST",

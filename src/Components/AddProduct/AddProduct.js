@@ -18,7 +18,7 @@ const AddProduct = () => {
       imageURL: imageURL,
     };
 
-    const url = `https://limitless-coast-06672.herokuapp.com/addProduct`;
+    const url = `https://protected-hamlet-09778.herokuapp.com/addProduct`;
     console.log(productData);
     fetch(url, {
       method: "POST",
