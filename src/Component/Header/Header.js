@@ -12,7 +12,7 @@ const Header = () => {
       <Navbar className="container" expand="lg">
         <Link to="/">
           <Navbar.Brand>
-            <h3 className="brand">Mudighor</h3>
+            <h3 className="brand">Fresh_Valley</h3>
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
