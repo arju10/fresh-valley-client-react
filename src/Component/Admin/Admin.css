@@ -1,0 +1,33 @@
+.brand-admin {
+  color: #000;
+}
+.admin-bar {
+  height: 100vh;
+}
+.admin-menu a {
+  width: 100%;
+  padding-left: 50px;
+}
+.admin-menu a:hover {
+  background-color: white;
+  transition: all 0.4s;
+}
+.is-active {
+  background-color: aliceblue;
+}
+@media (max-width: 768px) {
+  .admin-bar {
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .admin-menu {
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    align-items: flex-end !important;
+  }
+  .gif {
+    margin-top: 2rem !important;
+  }
+}

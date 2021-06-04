@@ -1,66 +1,54 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "./Components/Home/Home";
-import AddProduct from "./Components/AddProduct/AddProduct";
-import "../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
-import Header from "./Components/Header/Header";
-import Login from "./Components/Login/Login";
-import AddOrder from "./Components/AddOrder/AddOrder";
-import ManageProduct from "./Components/ManageProduct/ManageProduct";
+import Header from "./Component/Header/Header";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./Component/Login/Login";
 import { createContext, useState } from "react";
-import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
-import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import CheckOut from "./Components/CheckOut/CheckOut";
-import Admin from "./Components/Admin/Admin";
-import Order from "./Components/AddOrder/AddOrder";
-import { Spinner } from "react-bootstrap";
-
+import PrivetRoute from "./Component/PrivetRoute/PrivetRoute";
+import Admin from "./Component/Admin/Admin";
+import Home from "./Component/Home/Home";
+import Checkout from "./Component/Checkout/Checkout";
+import Shiping from "./Component/Shiping/Shiping";
+import Orders from "./Component/Orders/Orders";
 export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-      <p>Name : {loggedInUser.name}</p>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/">
-         
-            <Home />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/admin">
-            <AddProduct/>
-          </Route>
-          <Route exact path="/order">
-            <AddOrder />
-          </Route>
-
-          <Route exact path="/checkout">
-            <CheckOut />
-          </Route>
-          <Route exact path="/checkout/:id">
-            <CheckOut />
-            {/* <AddOrder/> */}
-          </Route>
-          <Route exact path="/order">
-            <Order />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/manageProduct">
-            <ManageProduct />
-          </Route>
-          <Route path="/addproduct">
-            <AddProduct />
-          </Route>
-        </Switch>
-      </Router>
-    </UserContext.Provider>
+    <div className="App">
+      <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Header />
+              <Home />
+            </Route>
+            <Route path="/login">
+              <Header />
+              <Login />
+            </Route>
+            <PrivetRoute path="/admin">
+              <Admin />
+            </PrivetRoute>
+            <PrivetRoute path="/buy/:product/:id">
+              <Header />
+              <Checkout />
+            </PrivetRoute>
+            <Route path="/checkout/:product/:id">
+              <Header />
+              <Shiping />
+            </Route>
+            <PrivetRoute path="/orders">
+              <Header />
+              <Orders />
+            </PrivetRoute>
+            <Route path="*">
+              <h2>NOT found</h2>
+            </Route>
+          </Switch>
+        </Router>
+      </UserContext.Provider>
+    </div>
   );
 }
 
